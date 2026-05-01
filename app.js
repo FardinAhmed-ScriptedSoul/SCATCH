@@ -13,6 +13,10 @@ connectDB();
 const cookieParser = require('cookie-parser');
 const path = require("path");
 
+const ownerRouter = require("./routes/ownerRouter.js");
+const userRouter = require("./routes/userRouter.js");
+const productsRouter = require("./routes/productsRouter.js")
+
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
