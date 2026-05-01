@@ -20,7 +20,10 @@ app.use(cookieParser()); // ✅ Fixed: added parentheses
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
-
+//routing
+app.use("/owners",ownerRouter);
+app.use("/users",userRouter);
+app.use("/products",productsRouter);
 
 
 const PORT = process.env.PORT || 4000;
