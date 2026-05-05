@@ -3,6 +3,9 @@
 require('dotenv').config();
 
 const mongoose = require("mongoose");
+const config = require('config')
+const dbgr = require('debug')("develeopment:mongoose");
+//set DEBUG=dev:*
 // mongoose
 //   .connect("mongodb://127.0.0.1:27017/scatch")
 //   .then(function() {
@@ -30,8 +33,8 @@ const connectDB = async () => {
     
     const conn = await mongoose.connect(dbURI, options);
     
-    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
-    console.log(`📁 Database: ${conn.connection.name}`);
+    dbgr(`✅ MongoDB Connected: ${conn.connection.host}`);
+    dbgr(`📁 Database: ${conn.connection.name}`);
     
     // Handle connection events
     mongoose.connection.on('error', (err) => {
@@ -43,7 +46,7 @@ const connectDB = async () => {
     });
 
     mongoose.connection.on('reconnected', () => {
-      console.log('✅ MongoDB reconnected');
+      dbgr('✅ MongoDB reconnected');
     });
 
   } catch (error) {
